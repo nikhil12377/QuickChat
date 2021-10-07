@@ -33,3 +33,76 @@ body {
   align-items: center;
   width: 100%;
 }
+
+.video {
+  width: 550px;
+}
+
+.gridContainer {
+  justify-content: center;
+}
+
+.paper {
+  padding: 10px;
+  border: 2px solid black;
+  margin: 10px;
+  width: fit-content;
+  background-color: white;
+}
+
+.options .root {
+  display: flex;
+  flex-direction: column;
+}
+.options .gridContainer {
+  padding: 20px;
+  width: 100%;
+}
+.options .container {
+  width: 600px;
+  margin: 35px 0;
+  padding: 0;
+}
+.options .paper {
+  width: 100%;
+  padding: 10px 20px;
+  border: 2px solid black;
+}
+
+.options .padding {
+  padding: 5px 0px;
+}
+
+.options .gridContainer button,
+input,
+h6 {
+  margin: 8px 0px;
+
+  width: -webkit-fill-available;
+}
+
+.options .bi-clipboard-data,
+.bi-telephone-fill {
+  margin: 0px 8px;
+  margin-bottom: 5px;
+}
+
+/* For Mobile devices */
+
+@media only screen and (max-width: 600px) {
+  .gridContainer {
+    flex-direction: column;
+  }
+
+  .navbar {
+    width: 90%;
+  }
+
+  .options .gridContainer {
+    flex-direction: "column";
+  }
+
+  .options .container {
+    width: "80%";
+  }
+}

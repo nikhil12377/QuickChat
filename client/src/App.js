@@ -6,14 +6,16 @@ import Options from "./components/Options";
 
 export default function App() {
   return (
-    <div className="wrapper">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand">Video Chat</a>
-      </nav>
-      <VideoPlayer />
-      <Options>
-        <Notifications />
-      </Options>
-    </div>
+    <>
+      <div className="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div className="navbar-brand">Video Chat</div>
+        </nav>
+        <VideoPlayer />
+        <Options>
+          <Notifications />
+        </Options>
+      </div>
+    </>
   );
 }

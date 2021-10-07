@@ -1,12 +1,13 @@
 import io from 'socket.io-client';
 import Peer from 'simple-peer';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { createContext, useEffect, useRef, useState } from 'react';
 
-const SocketContext = useContext();
 
 const socket = io('http://localhost:5000');
+const SocketContext = createContext();
 
 const ContextProvider = ({ children }) => {
+
 
     const [stream, setStream] = useState(null);
     const [me, setMe] = useState('');
@@ -20,12 +21,16 @@ const ContextProvider = ({ children }) => {
     const connectionRef = useRef();
 
     useEffect(() => {
-        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-            .then((currentStream) => {
-                setStream(currentStream)
-
-                myVideo.current.srcObject = currentStream;
-            })
+        const getUserMedia = async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                setStream(stream);
+                myVideo.current.srcObject = stream;
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getUserMedia();
 
         socket.on('me', (id) => setMe(id))
 

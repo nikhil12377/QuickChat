@@ -1,7 +1,7 @@
-const app = require("express")();
+const express = require("express");
+const app = express();
 const server = require("http").createServer(app);
 const cors = require("cors");
-const { access } = require("fs");
 
 const io = require("socket.io")(server, {
     cors: {
@@ -18,19 +18,19 @@ app.get("/", (req, res) => {
     res.send("server is running");
 });
 
-io.on('connection', (socket) => {
-    socket.emmit('me', socket.id);
 
-    socket.on('disconnect', () => {
-        socket.broadcast.emmit("call ended");
+io.on("connection", (socket) => {
+    socket.emit("me", socket.id);
+    socket.on("disconnect", () => {
+        socket.broadcast.emit("callEnded");
     });
 
-    socket.on('calluser', ({ userToCall, signalData, from, name }) => {
-        io.to(userToCall).emmit("calluser", { signal: signalData, from, name })
+    socket.on("callUser", ({ userToCall, signalData, from, name }) => {
+        io.to(userToCall).emit("callUser", { signal: signalData, from, name });
     });
 
-    socket.on("answercall", (data) => {
-        io.on(data.to).emmit("call accepted", data.signal);
+    socket.on("answerCall", (data) => {
+        io.to(data.to).emit("callAccepted", data.signal);
     });
 });
 

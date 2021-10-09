@@ -8,7 +8,7 @@ export default function App() {
   return (
     <>
       <div className="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="navbar-brand">Video Chat</div>
         </nav>
         <VideoPlayer />

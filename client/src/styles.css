@@ -50,11 +50,12 @@ body {
   background-color: white;
 }
 
-.options .root {
-  display: flex;
-  flex-direction: column;
+.wrapper .gridContainer {
+  display: inline-flex;
 }
+
 .options .gridContainer {
+  display: flex;
   padding: 20px;
   width: 100%;
 }
@@ -70,6 +71,7 @@ body {
 }
 
 .options .padding {
+  margin: 0px 20px;
   padding: 5px 0px;
 }
 
@@ -89,20 +91,27 @@ h6 {
 
 /* For Mobile devices */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 546px) {
   .gridContainer {
     flex-direction: column;
   }
 
   .navbar {
-    width: 90%;
+    width: 100%;
+    margin-left: 400px;
   }
 
   .options .gridContainer {
-    flex-direction: "column";
+    display: flex;
+    padding: 20px;
+    width: 100%;
   }
 
   .options .container {
-    width: "80%";
+    width: 100%;
+  }
+
+  .wrapper .gridContainer {
+    display: inline-flex;
   }
 }
